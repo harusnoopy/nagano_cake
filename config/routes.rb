@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
+  root to: "public/homes#top"
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
-  get 'about' => 'homes#about'
-  
+
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  get 'about' => 'public/homes#about'
+
   resources :items, only: [:index, :show]
 
   resources :registrations, only: [:new, :create]
@@ -24,16 +31,11 @@ Rails.application.routes.draw do
   get 'thanx' => 'orders#thanx'
 
   resources :adresses, only: [:index, :edit, :create, :update, :destroy]
-  
-  
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-  
+
+
   namespace :admin do
     resources :sessioins, only: [:new, :create, :destroy]
-    get 'top' => 'sessioins#top'
+    get '' => 'admin/homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
@@ -43,6 +45,4 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:show]
   end
-  root to: "public/homes#top"
-
 end
