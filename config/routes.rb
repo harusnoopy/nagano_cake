@@ -30,16 +30,11 @@ Rails.application.routes.draw do
   post 'confirm' => 'orders#confirm'
   get 'thanx' => 'orders#thanx'
 
-  resources :adresses, only: [:index, :edit, :create, :update, :destroy]
-
-
   namespace :admin do
     resources :sessioins, only: [:new, :create, :destroy]
     get '' => 'admin/homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-
-    resources :genres, only: [:index, :create, :edit, :update]
 
     resources :customers, only: [:index, :show, :edit, :update]
 

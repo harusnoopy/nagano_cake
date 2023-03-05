@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><span class="bg-secondary font-weight-bold">管理者ログイン</span></p>
+      <p><span class="bg-light font-weight-bold">　管理者ログイン　</span></p>
     </div>
   </div>
   
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <table>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <tr>
+        <%= form_with model: @admin, url: admin_session_path do |f| %>
+         <tr>
             <div class="field">
               <td><%= f.label :email, "メールアドレス", class: "mr-5" %></td>
               <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50" %></td>
@@ -26,7 +26,7 @@
           <tr>
           <div class="actions">
             <td></td>
-            <td><%= f.submit "ログイン", class:"btn btn-primary mt-4" %></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary mt-4" %></td>
           </div>
           </tr>
         <% end %>

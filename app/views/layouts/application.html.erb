@@ -11,6 +11,39 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <a class="navbar-brand font-italic font-weight-light" href="/">Nagano Cake</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class: 'nav-link text-dark border rounded ml-5' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path, class: 'nav-link text-dark border rounded ml-5' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_registration_path, class: 'nav-link text-dark border rounded ml-5' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_sessioin_path, class: 'nav-link text-dark border rounded ml-5' %>
+                </li>
+
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer></footer>
   </body>
 </html>

@@ -1,2 +1,18 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><span class="bg-light font-weight-bold">　商品新規登録　</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <table>
+        <tr>
+          <td>商品画像</td>
+          <td><%= file_field :image, accept: "image/*" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
