@@ -10,25 +10,26 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  get 'about' => 'public/homes#about'
-
-  resources :items, only: [:index, :show]
-
-  resources :registrations, only: [:new, :create]
-
-  resources :sessioins, only: [:new, :create, :destroy]
-
-  resource :customers, only: [:show, :edit, :update]
-  get 'unsubscribe' => 'customers#unsubscribe'
-  patch 'withdrawal' => 'customers#withdrawal'
-
-  resources :cart_items, only: [:index, :update, :destroy, :create]
-  delete ':id/destroy_all' => 'cart_items#destroy_all'
-
-  resources :orders, only: [:new, :create, :index, :show]
-  post 'confirm' => 'orders#confirm'
-  get 'thanx' => 'orders#thanx'
+  scope module: :public do
+    get 'about' => 'homes#about'
+  
+    resources :items, only: [:index, :show]
+  
+    resources :registrations, only: [:new, :create]
+  
+    resources :sessioins, only: [:new, :create, :destroy]
+  
+    resource :customers, only: [:show, :edit, :update]
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'withdrawal' => 'customers#withdrawal'
+  
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete ':id/destroy_all' => 'cart_items#destroy_all'
+  
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'confirm' => 'orders#confirm'
+    get 'thanx' => 'orders#thanx'
+  end
 
   namespace :admin do
     resources :sessioins, only: [:new, :create, :destroy]

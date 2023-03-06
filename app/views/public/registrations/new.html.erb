@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <%= form_with model: @customer do |f| %>
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <table>
@@ -47,10 +47,16 @@
         <div class="field">
           <tr>
             <td><%= f.label :address, "住所", class: "my-2" %></td>
-            <td></td><td colspan="3"><%= f.text_field :address, autocomplete: "address" %></td>
+            <td></td><td colspan="3"><%= f.text_field :address, autocomplete: "address", size: "50" %></td>
           </tr>
         </div>
 
+        <div class="field">
+          <tr>
+            <td><%= f.label :telephone_number, "電話番号", class: "my-2" %></td>
+            <td></td><td><%= f.text_field :telephone_number, autocomplete: "telephone_number" %></td><td colspan="2"></td>
+          </tr>
+        </div>
 
         <div class="field">
           <tr>
@@ -79,7 +85,7 @@
 
   <div class="row">
     <div class="col-md-9 offset-md-1">
-      <p><span class="bg-light font-weight-bold">　既に登録済みの方　</span></p>
+      <p class="mt-3"><span class="bg-light font-weight-bold">　既に登録済みの方　</span></p>
     </div>
   </div>
   <div class="row">
