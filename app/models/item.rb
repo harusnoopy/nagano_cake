@@ -9,6 +9,10 @@ class Item < ApplicationRecord
     image
   end
   
+  def add_tax_price
+    (self.price * 1.10).round
+  end
+  
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
 end

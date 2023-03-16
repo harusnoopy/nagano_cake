@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 offset-md-1">
+    <div class="col-md-9 offset-md-1 d-flex justify-content-between">
       <p><span class="bg-light font-weight-bold px-3">商品一覧</span></p>
-      <%= button_to new_admin_item_path, method: :get do %>
+      <%= button_to new_admin_item_path, method: :get, class: "btn-light bg-white rounded-circle shadow border-0 pull-right" do %>
         <i class="fas fa-plus"></i>
       <% end %>
     </div>
