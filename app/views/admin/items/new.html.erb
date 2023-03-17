@@ -7,35 +7,35 @@
 
   <div class="row">
     <%= form_with model: @item, url: admin_items_path do |f| %>
-      <div class="col-md-8 offset-md-2">
+      <div class="col offset-md-2">
         <table>
           <div class="field">
             <tr>
-              <td><%= f.label :image, "商品画像", class: "mr-4", size: "20" %></td>
+              <td><%= f.label :image, "商品画像", class: "mr-4" %></td>
               <td><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
           </div>
           <div class="field">
             <tr>
-              <td><%= f.label :name, "商品名", class: "mr-4", size: "20" %></td>
-              <td><%= f.text_field :name, autocomplete: "name", size: "50" %></td>
+              <td><%= f.label :name, "商品名", class: "mr-4" %></td>
+              <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", size: "50" %></td>
             </tr>
           </div>
           <div class="field">
             <tr>
-              <td><%= f.label :introduction, "商品説明", class: "mr-4", size: "20" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", size: "50" %></td>
+              <td><%= f.label :introduction, "商品説明", class: "mr-4" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", size: "50" %></td>
             </tr>
           </div>
           <div class="field">
             <tr>
-              <td><%= f.label :price, "税抜価格", class: "mr-4", size: "20" %></td>
-              <td><%= f.text_field :price, autocomplete: "price", size: "50" %></td>
+              <td><%= f.label :price, "税抜価格", class: "mr-4" %></td>
+              <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", size: "50" %></td>
             </tr>
           </div>
         </table>
       </div>
-      <div class="col-md-6 offset-md-4">
+      <div class="col row justify-content-center">
         <%= f.submit "新規登録", class: "btn btn-success my-3 px-5" %>
       </div>
     <% end %>

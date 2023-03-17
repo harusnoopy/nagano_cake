@@ -4,7 +4,7 @@
       <p><span class="bg-light font-weight-bold px-3">管理者ログイン</span></p>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <table>
@@ -12,21 +12,21 @@
           <tr>
             <div class="field">
               <td><%= f.label :email, "メールアドレス", class: "mr-5" %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examle.com", size: "50" %></td>
             </div>
           </tr>
-          
+
           <tr>
             <div class="field">
               <td><%= f.label :password, "パスワード", class: "mr-5" %></td>
               <td><%= f.password_field :password, autocomplete: "current-password", size: "50" %></td>
             </div>
           </tr>
-          
+
           <tr>
           <div class="actions">
             <td></td>
-            <td><%= f.submit "ログイン", class: "btn btn-primary mt-4" %></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary mt-4 px-5" %></td>
           </div>
           </tr>
         <% end %>

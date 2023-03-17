@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :sessioins, only: [:new, :create, :destroy]
-    get '' => 'admin/homes#top'
+    get '' => 'homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
