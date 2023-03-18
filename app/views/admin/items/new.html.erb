@@ -3,6 +3,17 @@
     <div class="col-md-9 offset-md-1">
       <p><span class="bg-light font-weight-bold px-3">商品新規登録</span></p>
     </div>
+
+    <div class="col-md-8 offset-md-2">
+      <% if @item.errors.any? %>
+        <%= @item.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
@@ -18,19 +29,19 @@
           <div class="field">
             <tr>
               <td><%= f.label :name, "商品名", class: "mr-4" %></td>
-              <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", size: "50" %></td>
+              <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", size: "45" %></td>
             </tr>
           </div>
           <div class="field">
             <tr>
               <td><%= f.label :introduction, "商品説明", class: "mr-4" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", size: "50" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", size: "48" %></td>
             </tr>
           </div>
           <div class="field">
             <tr>
               <td><%= f.label :price, "税抜価格", class: "mr-4" %></td>
-              <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", size: "50" %></td>
+              <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", size: "45" %>円</td>
             </tr>
           </div>
         </table>

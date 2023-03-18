@@ -3,6 +3,17 @@
     <div class="col-md-9 offset-md-1">
       <p><span class="bg-light font-weight-bold px-3">商品編集</span></p>
     </div>
+    
+    <div class="col-md-8 offset-md-2">
+      <% if @item.errors.any? %>
+        <%= @item.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">

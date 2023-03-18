@@ -1,2 +1,85 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">
+        <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+      </span></p>
+    </div>
+
+    <div class="col-md-8 offset-md-2">
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @customer, url: admin_customer_path do |f| %>
+      <div class="col offset-md-1">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td scope="row" class="col-md-4">会員ID</td>
+              <td><%= @customer.id %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">氏名</td>
+              <td><%= f.text_field :last_name, autocomplete: "last_name", autofocus: true %></td>
+              <td><%= f.text_field :first_name, autocomplete: "first_name" %></td>
+            </tr>
+            <tr>
+              <td scope="row">フリガナ</td>
+              <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
+              <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
+            </tr>
+            <tr>
+              <td scope="row">郵便番号</td>
+              <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">住所</td>
+              <td colspan="2"><%= f.text_field :address, autocomplete: "address", size: "50" %></td>
+            </tr>
+            <tr>
+              <td scope="row">電話番号</td>
+              <td><%= f.text_field :telephone_number, autocomplete: "telephone_number" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">メールアドレス</td>
+              <td><%= f.email_field :email, autocomplete: "email" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">会員ステータス</td>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" checked disabled>
+                  <label class="form-check-label" for="flexRadioDisabled">
+                    有効
+                  </label>
+                  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
+                  <label class="form-check-label" for="flexRadioCheckedDisabled">
+                    退会
+                  </label>
+                </div>
+                <%= @customer.is_deleted %>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col row justify-content-center">
+          <%= f.submit "変更を保存", class: "btn btn-success my-3 px-5" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
