@@ -1,2 +1,39 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1">
+      <%= image_tag @item.get_image(230, 230) %>
+    </div>
+    <div class="col">
+      <table>
+        <tr>
+          <td class="pt-3"><strong><h4><%= @item.name %></h4></strong></td>
+        </tr>
+        <tr>
+          <td class="pt-3"><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td class="pt-3"><big><strong>￥<%= @item.add_tax_price.to_i.to_s(:delimited) %></strong></big><small>（税込）</small></td>
+        </tr>
+      </table>
+      <% if customer_signed_in? %>
+        <div class="d-flex align-items-center">
+          <div class="form-group mt-3">
+            <div class="col">
+              <select class="form-control">
+                <option selected>個数選択</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          <%= link_to "カートに入れる", cart_items_path, class: "btn btn-success px-3" %>
+        </div>
+      <% else %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

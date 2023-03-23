@@ -15,10 +15,6 @@ Rails.application.routes.draw do
   
     resources :items, only: [:index, :show]
   
-    resources :registrations, only: [:new, :create]
-  
-    resources :sessioins, only: [:new, :create, :destroy]
-  
     resource :customers, only: [:show, :edit, :update]
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdrawal' => 'customers#withdrawal'
@@ -32,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :sessioins, only: [:new, :create, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
     get '' => 'homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

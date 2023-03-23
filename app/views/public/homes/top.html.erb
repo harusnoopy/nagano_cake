@@ -8,9 +8,26 @@
     </p>
   </div>
   <div class="row">
-    <h4>新着商品</h4>
-    <div class="col-md-3">
-      
-    </div>
+    <h4 class="font-weight-bold">新着商品</h4>
+  </div>
+  <div class="row">
+    <% @items_latest4.each do |item| %>
+      <div class="col-3">
+        <div class="card border-0">
+          <%= image_tag item.get_image(200,200) %>
+          <div class="card-body">
+            <p class="card-text">
+              <%= item.name %><br>
+              ￥<%= item.price.to_i.to_s(:delimited) %><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row justify-content-end pb-3">
+    <%= link_to items_path do %>
+      全ての商品を見る>
+    <% end %>
   </div>
 </div>
