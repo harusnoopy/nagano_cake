@@ -60,19 +60,18 @@
             <tr>
               <td scope="row">会員ステータス</td>
               <td>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" checked disabled>
-                  <label class="form-check-label" for="flexRadioDisabled">
-                    有効
-                  </label>
-                  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
-                  <label class="form-check-label" for="flexRadioCheckedDisabled">
-                    退会
-                  </label>
-                </div>
-                <%= @customer.is_deleted %>
+                <% if @customer.is_deleted == false %>
+                  <%= f.radio_button :is_deleted, false, checked: true %>
+                  <%= f.label :is_deleted_false, "有効" %>
+                  <%= f.radio_button :is_deleted, true %>
+                  <%= f.label :is_deleted_true, "退会" %>
+                <% else %>
+                  <%= f.radio_button :is_deleted, false, disabled: true %>
+                  <%= f.label :is_deleted, "有効", class: "text-secondary" %>
+                  <%= f.radio_button :is_deleted, true, checked: true, disabled: true %>
+                  <%= f.label :is_deleted, "退会", class: "text-secondary" %>
+                <% end %>
               </td>
-              <td></td>
             </tr>
           </tbody>
         </table>

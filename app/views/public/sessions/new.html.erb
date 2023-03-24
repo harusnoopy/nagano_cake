@@ -10,6 +10,7 @@
       <p><small><span class="bg-light font-weight-bold px-3 ml-3">会員登録の方はこちらからログイン</span></small></p>
     </div>
     <div class="col-md-8 offset-md-2">
+      <p class="alert"><%= alert %></p>
       <table>
         <%= form_with model: @customer, url: customer_session_path do |f| %>
           <tr>
