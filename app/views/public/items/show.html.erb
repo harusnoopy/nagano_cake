@@ -3,7 +3,7 @@
     <div class="col-md-3 offset-md-1">
       <%= image_tag @item.get_image(230, 230) %>
     </div>
-    <div class="col">
+    <div class="col offset-md-1">
       <table>
         <tr>
           <td class="pt-3"><strong><h4><%= @item.name %></h4></strong></td>
@@ -16,20 +16,14 @@
         </tr>
       </table>
       <% if customer_signed_in? %>
-        <div class="d-flex align-items-center">
-          <div class="form-group mt-3">
-            <div class="col">
-              <select class="form-control">
-                <option selected>個数選択</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+        <div class="d-flex justify-content-atart mt-3">
+          <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+            <div class="form-inline">
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :amount, *[1..10], { include_blank: '個数選択' }, { class: 'form-control mx-3' } %>
+              <%= f.submit "カートに入れる", class: "btn btn-success px-3 mx-3" %>
             </div>
-          </div>
-          <%= link_to "カートに入れる", cart_items_path, class: "btn btn-success px-3" %>
+          <% end %>
         </div>
       <% else %>
       <% end %>

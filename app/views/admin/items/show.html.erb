@@ -9,7 +9,7 @@
     <div class="col-md-3 offset-md-1">
       <%= image_tag @item.get_image(230, 230) %>
     </div>
-    <div class="col">
+    <div class="col offset-md-1">
       <table>
         <tr>
           <td class="pt-3 pr-5">商品名</td>
@@ -25,10 +25,10 @@
           （<%= @item.price.to_i.to_s(:delimited) %>）円</td>
         </tr>
       </table>
-      <div class="col row justify-content-center">
-        <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success my-3 px-5" %>
-      </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success my-3 px-5" %>
   </div>
 </div>
 
