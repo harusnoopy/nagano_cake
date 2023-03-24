@@ -10,18 +10,19 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
   scope module: :public do
     get 'about' => 'homes#about'
-  
+
     resources :items, only: [:index, :show]
-  
-    resource :customers, only: [:show, :edit, :update]
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'withdrawal' => 'customers#withdrawal'
-  
+
+    resource :customer, only: [:show, :edit, :update]
+    get 'unsubscribe' => 'customer#unsubscribe'
+    patch 'withdrawal' => 'customer#withdrawal'
+
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete ':id/destroy_all' => 'cart_items#destroy_all'
-  
+
     resources :orders, only: [:new, :create, :index, :show]
     post 'confirm' => 'orders#confirm'
     get 'thanx' => 'orders#thanx'

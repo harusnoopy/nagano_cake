@@ -1,2 +1,52 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <h5 class="my-4"><span class="bg-light font-weight-bold px-3">会員情報編集</span></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @customer, url: customer_path do |f| %>
+      <div class="col offset-md-1">
+      <%= render "public/shared/error_messages", resource: f.object %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td scope="row">氏名</td>
+              <td><%= f.text_field :last_name, autocomplete: "last_name", autofocus: true %></td>
+              <td><%= f.text_field :first_name, autocomplete: "first_name" %></td>
+            </tr>
+            <tr>
+              <td scope="row">フリガナ</td>
+              <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
+              <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
+            </tr>
+            <tr>
+              <td scope="row">郵便番号</td>
+              <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">住所</td>
+              <td colspan="2"><%= f.text_field :address, autocomplete: "address", size: "50" %></td>
+            </tr>
+            <tr>
+              <td scope="row">電話番号</td>
+              <td><%= f.text_field :telephone_number, autocomplete: "telephone_number" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td scope="row">メールアドレス</td>
+              <td><%= f.email_field :email, autocomplete: "email" %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col row justify-content-center">
+          <%= f.submit "編集内容を保存", class: "btn btn-success my-3 px-5" %>
+          <%= link_to "退会する",  unsubscribe_path, class: "btn btn-danger my-3 ml-5 px-4" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
