@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><span class="bg-light font-weight-bold px-3">ログイン</span></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <p><small><span class="bg-light font-weight-bold px-3 ml-3">会員登録の方はこちらからログイン</span></small></p>
+    </div>
+    <div class="col-md-8 offset-md-2">
+      <table>
+        <%= form_with model: @customer, url: customer_session_path do |f| %>
+          <tr>
+            <div class="field">
+              <td><%= f.label :email, "メールアドレス", class: "mr-5" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@examle.com", size: "50" %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="field">
+              <td><%= f.label :password, "パスワード", class: "mr-5" %></td>
+              <td><%= f.password_field :password, autocomplete: "current-password", size: "50" %></td>
+            </div>
+          </tr>
+
+          <tr>
+          <div class="actions">
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary mt-4 px-5" %></td>
+          </div>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-11 offset-md-1 mt-3">
+      <p><small><span class="bg-light font-weight-bold px-3 ml-3">会員登録がお済みでない方</span></small></p>
+    </div>
+    <div class="col offset-md-2">
+      <%= link_to "こちら", new_customer_registration_path, class: "mx-3" %>から新規登録を行ってください。
+    </div>
+  </div>
+</div>
