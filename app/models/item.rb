@@ -13,8 +13,13 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def add_tax_price
-    (self.price * 1.10).round
+
+  def delimit_add_tax
+    (price * 1.10).floor.to_i.to_s(:delimited)
+  end
+  
+  def delimit
+    price.to_i.to_s(:delimited)
   end
 
   has_many :cart_items, dependent: :destroy

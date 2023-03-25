@@ -12,7 +12,7 @@
           <td class="pt-3"><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td class="pt-3"><big><strong>￥<%= @item.add_tax_price.to_i.to_s(:delimited) %></strong></big><small>（税込）</small></td>
+          <td class="pt-3"><big><strong>￥<%= @item.delimit_add_tax %></strong></big><small>（税込）</small></td>
         </tr>
       </table>
       <% if customer_signed_in? %>

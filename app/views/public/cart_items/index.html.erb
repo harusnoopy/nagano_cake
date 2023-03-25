@@ -1,2 +1,46 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col d-flex justify-content-between">
+      <h5 class="mt-4"><span class="bg-light font-weight-bold px-3 mt-1">ショッピングカート</span></h5>
+      <%= link_to "カートを空にする", orders_path, class: "btn btn-danger mb-3 mt-3 px-3" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="row" class="table-active">商品名</th>
+            <th class="table-active">単価(税込)</th>
+            <th class="table-active">数量</th>
+            <th class="table-active">小計</th>
+            <th class="table-active"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag cart_item.item.get_image(80, 80) %>　<%= cart_item.item.name %></td>
+              <td class="align-middle"><%= cart_item.item.delimit_add_tax %></td>
+              <td class="align-middle">
+                <%= form_with model: @cart_item, url: cart_item_path(current_customer.id) do |f| %>
+                  <div class="form-inline d-flex justify-content-around">
+                    <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+                    <%= f.select :amount, *[1..10], { selected: cart_item.amount }, { class: 'form-control' } %>
+                    <%= f.submit "変更", class: "btn btn-success px-3" %>
+                  </div>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= cart_item.subtotal %></td>
+              <td class="align-middle"><%= link_to "削除する", orders_path, class: "btn btn-danger px-2 py-1 d-flex justify-content-center" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="col-md-8 d-flex align-items-start p-0">
+        <%= link_to "買い物を続ける", orders_path, class: "btn btn-primary mb-3 ml-3 px-4 py-1" %>
+      </div>
+    </div>
+  </div>
+</div>

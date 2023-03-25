@@ -21,8 +21,8 @@
         </tr>
         <tr>
           <td class="pt-3 pr-5">税込価格<br>（税抜価格）</td>
-          <td class="pt-3"><%= @item.add_tax_price.to_i.to_s(:delimited) %>
-          （<%= @item.price.to_i.to_s(:delimited) %>）円</td>
+          <td class="pt-3"><%= @item.delimit_add_tax %>
+          （<%= @item.delimit %>）円</td>
         </tr>
       </table>
     </div>
