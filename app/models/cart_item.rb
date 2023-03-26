@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
 
   def subtotal
-    (item.price * amount * 1.10).floor.to_i.to_s(:delimited)
+    (item.price * amount * 1.10).floor
   end
 
   belongs_to :customer

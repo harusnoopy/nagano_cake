@@ -17,15 +17,15 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     resource :customer, only: [:show, :edit, :update]
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'withdrawal' => 'customers#withdrawal'
+    get 'customer/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customer/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete ':id/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items/:id/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
 
     resources :orders, only: [:new, :create, :index, :show]
-    post 'confirm' => 'orders#confirm'
-    get 'thanx' => 'orders#thanx'
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    get 'orders/thanx' => 'orders#thanx', as: 'thanx'
   end
 
   namespace :admin do
