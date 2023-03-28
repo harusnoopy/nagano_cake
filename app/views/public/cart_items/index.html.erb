@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col d-flex justify-content-between">
       <h5 class="mt-4"><span class="bg-light font-weight-bold px-3 mt-1">ショッピングカート</span></h5>
-      <%= link_to "カートを空にする", destroy_all_path(current_customer.id), method: :delete, "data-confirm" => "カート内の商品をすべて削除しますか？", class: "btn btn-danger my-3 px-3" %>
+      <% if @cart_items.any? %>
+        <%= link_to "カートを空にする", destroy_all_path(current_customer.id), method: :delete, "data-confirm" => "カート内の商品をすべて削除しますか？", class: "btn btn-danger my-3 px-3" %>
+      <% end %>
     </div>
   </div>
 
@@ -19,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <% total_price = 0 %> 
+          <% total_price = 0 %>
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= image_tag cart_item.item.get_image(80, 80) %>　<%= cart_item.item.name %></td>
@@ -55,6 +57,8 @@
     </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success font-weight-bold px-4 mb-3" %>
+    <% if total_price != 0 %>
+      <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success font-weight-bold px-4 mb-3" %>
+    <% end %>
   </div>
 </div>

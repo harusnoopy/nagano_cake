@@ -4,7 +4,54 @@
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col-7">
+      <p class="mt-3"><strong>注文情報</strong></p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td scope="row" class="table-active" style="width: 23%">注文日</td>
+            <td class="align-middle"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class="table-active">配送先</td>
+            <td class="align-middle">
+              <%= @order.postal_code %><br>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-active">支払方法</td>
+            <td class="align-middle"><%= @order.payment_method_i18n %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="col-4">
+      <p class="mt-3"><strong>請求情報</strong></p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td scope="row" class="table-active" style="width: 40%">商品合計</td>
+            <td class="align-middle"><%= (@order.total_payment - @order.shopping_cost).to_i.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td class="table-active">配送料</td>
+            <td class="align-middle"><%= @order.shopping_cost.to_i.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <th class="table-active">ご請求額</th>
+            <td class="align-middle"><%= @order.total_payment.to_i.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
       <p><strong>注文内容</strong></p>
       <table class="table table-bordered">
         <thead>
@@ -18,19 +65,10 @@
         <tbody>
           <% @order_details.each do |order_detail| %>
             <tr>
-              <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-              <td class="align-middle">
-                <%= order.postal_code %><br>
-                <%= order.address %><br>
-                <%= order.name %>
-              </td>
-              <td class="align-middle">
-                <% order.order_details.each do |order_detail| %>
-                  <%= order_detail.item.name %><br>
-                <% end %>
-              </td>
-              <td class="align-middle"><%= order.total_payment.to_i.to_s(:delimited) %></td>
-              <td class="align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary px-2 py-1 d-flex justify-content-center" %></td>
+              <td class="align-middle"><%= order_detail.item.name %></td>
+              <td class="align-middle"><%= order_detail.item.delimit_add_tax %></td>
+              <td class="align-middle"><%= order_detail.amount %></td>
+              <td class="align-middle"><%= order_detail.subtotal %></td>
             </tr>
           <% end %>
         </tbody>

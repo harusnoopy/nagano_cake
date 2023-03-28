@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-9 offset-md-1">
-      <p><span class="bg-light font-weight-bold px-3">商品編集</span></p>
-    </div>
+  <div class="row offset-md-1">
+    <p><span class="bg-light font-weight-bold px-3">商品編集</span></p>
+  </div>
     
+  <div class="row">
     <div class="col-md-8 offset-md-2">
       <% if @item.errors.any? %>
         <%= @item.errors.count %>件のエラーが発生しました
@@ -16,40 +16,34 @@
     </div>
   </div>
 
-  <div class="row">
-    <%= form_with model: @item, url: admin_item_path do |f| %>
-      <div class="col offset-md-2">
-        <table>
-          <div class="field">
+  <%= form_with model: @item, url: admin_item_path do |f| %>
+    <div class="row">
+      <div class="col-8 offset-md-2">
+        <table class="table table-borderless">
+          <tbody>
             <tr>
               <td><%= f.label :image, "商品画像", class: "mr-4" %></td>
               <td><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
-          </div>
-          <div class="field">
             <tr>
               <td><%= f.label :name, "商品名", class: "mr-4" %></td>
               <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", size: "50" %></td>
             </tr>
-          </div>
-          <div class="field">
             <tr>
               <td><%= f.label :introduction, "商品説明", class: "mr-4" %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", size: "50" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", size: "53" %></td>
             </tr>
-          </div>
-          <div class="field">
             <tr>
               <td><%= f.label :price, "税抜価格", class: "mr-4" %></td>
               <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", size: "50" %></td>
             </tr>
-          </div>
+          </tbody>
         </table>
       </div>
-      <div class="col row justify-content-center">
-        <%= f.submit "変更を保存", class: "btn btn-success my-3 px-5" %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= f.submit "変更を保存", class: "btn btn-success my-3 px-5" %>
+    </div>
+  <% end %>
 </div>
 
