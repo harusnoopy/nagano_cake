@@ -19,6 +19,7 @@
           </tr>
         </thead>
         <tbody>
+          <% total_price = 0 %> 
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= image_tag cart_item.item.get_image(80, 80) %>　<%= cart_item.item.name %></td>
@@ -34,6 +35,7 @@
               <td class="align-middle"><%= cart_item.subtotal.to_i.to_s(:delimited) %></td>
               <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger px-2 py-1 d-flex justify-content-center" %></td>
             </tr>
+            <% total_price += cart_item.subtotal %>
           <% end %>
         </tbody>
       </table>
@@ -42,17 +44,15 @@
   <div class="row d-flex justify-content-between">
     <%= link_to "買い物を続ける", root_path, class: "btn btn-primary ml-5 mb-4 px-4 py-1 d-flex align-items-center" %>
     <div class="col-3">
-    <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <th scope="row" class="align-middle table-active">合計金額</th>
-          <% @cart_items.each do |cart_item| %>
-            <% @total_price += cart_item.subtotal %>
-          <% end %>
-          <td class="align-middle"><%= @total_price.to_i.to_s(:delimited) %></td>
-        </tr>
-      </tbody>
-    </table></div>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row" class="align-middle table-active">合計金額</th>
+            <td class="align-middle"><%= total_price.to_i.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row d-flex justify-content-center">
     <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success font-weight-bold px-4 mb-3" %>

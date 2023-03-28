@@ -16,7 +16,7 @@
         </tr>
       </table>
       <% if customer_signed_in? %>
-        <div class="d-flex justify-content-atart mt-3">
+        <div class="d-flex justify-content-start mt-3">
           <%= form_with model: @cart_item, url: cart_items_path do |f| %>
             <div class="form-inline">
               <%= f.hidden_field :item_id, :value => @item.id %>
