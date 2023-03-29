@@ -5,3 +5,12 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
   
+  devise:
+    failure:
+      customer:
+        unauthenticated: "続行する前に、サインインまたはサインアップが必要です"
+        invalid: "メールアドレスまたはパスワードが違います"
+        
+    sessions:
+      admin:
+        signed_out: "サインアウトしました"

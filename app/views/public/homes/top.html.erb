@@ -17,7 +17,9 @@
     <% @items_latest4.each do |item| %>
       <div class="col-3">
         <div class="card border-0">
-          <%= image_tag item.get_image(200,200) %>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(200,200) %>
+          <% end %>
           <div class="card-body">
             <p class="card-text">
               <%= item.name %><br>

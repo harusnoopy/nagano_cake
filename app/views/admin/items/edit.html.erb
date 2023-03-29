@@ -2,7 +2,7 @@
   <div class="row offset-md-1">
     <p><span class="bg-light font-weight-bold px-3">商品編集</span></p>
   </div>
-    
+
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <% if @item.errors.any? %>
@@ -37,7 +37,7 @@
               <td><%= f.label :price, "税抜価格", class: "mr-4" %></td>
               <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", size: "50" %></td>
             </tr>
-          </tbody>
+          <tbody>
         </table>
       </div>
     </div>

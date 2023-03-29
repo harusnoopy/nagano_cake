@@ -15,7 +15,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   # end
 
   def after_sign_up_path_for(resource)
-    customers_path
+    customer_path
   end
 
   protected
