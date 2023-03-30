@@ -6,7 +6,7 @@
   </div>
 
   <div class="row offset-md-3">
-      <p class="alert"><%= alert %></p>
+    <p class="alert"><%= alert %></p>
   </div>
 
   <div class="row">
@@ -14,8 +14,8 @@
       <p><small><span class="bg-light font-weight-bold px-3 ml-3">会員登録の方はこちらからログイン</span></small></p>
     </div>
     <div class="col-md-8 offset-md-2">
-      <table>
-        <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
+        <table>
           <tr>
             <div class="field">
               <td><%= f.label :email, "メールアドレス", class: "mr-5" %></td>
@@ -36,8 +36,8 @@
               <td><%= f.submit "ログイン", class: "btn btn-primary mt-4 px-5" %></td>
             </div>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
     </div>
   </div>
 
